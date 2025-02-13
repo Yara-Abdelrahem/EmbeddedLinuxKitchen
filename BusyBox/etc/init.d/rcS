@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mount -t sysfs null /sys
+
+mount -t proc null /proc
+mount -t devtmpfs null /dev
+mdev -s
+mount -t ext4 /dev/mmcblk0p2 /NewRoot
+mount -t vfat /dev/mmcblk0p1 /NewRoot/boot
+
+chroot NewRoot /bin/sh
+
+
